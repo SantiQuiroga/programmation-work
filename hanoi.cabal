@@ -1,0 +1,47 @@
+cabal-version:      3.0
+name:               hanoi
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+author:             Santiago Quiroga
+maintainer:         quiroga.default.santiago@gmail.com
+category:           Math
+build-type:         Simple
+extra-doc-files:    README.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    hs-source-dirs:   
+        lib
+    exposed-modules:
+        Hanoi
+    build-depends:    
+        base ^>=4.17.1.0
+    default-language: GHC2021
+
+executable hanoi
+    import:             warnings
+    hs-source-dirs:     
+        src
+    main-is:            Main.hs
+    build-depends:
+        hanoi,
+        base ^>=4.17.1.0
+    default-language:   GHC2021
+
+Test-Suite test-hanoi
+    import:             warnings
+    hs-source-dirs:
+        test
+    main-is:            TestHanoi.hs
+    build-depends:
+        hanoi,
+        base ^>=4.17.1.0,
+        tasty,
+        tasty-hunit
+    default-language:   GHC2021
+    type:               exitcode-stdio-1.0
+    ghc-options:        -Wall
