@@ -1,2 +1,4 @@
 dist-newstyle
 cabal.project.local
+stack.yaml.lock
+.stack-work
