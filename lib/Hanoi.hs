@@ -1,20 +1,20 @@
 module Hanoi (hanoiValidate) where
 
-type Move = (String, String)
+-- Solves the Tower of Hanoi puzzle for a given number of disks and rod names.
+-- The function takes four arguments:
+--   - The number of disks (n)
+--   - The name of the source rod (a)
+--   - The name of the auxiliary rod (b)
+--   - The name of the destination rod (c)
+--   It returns a list of tuples representing the moves required to solve the puzzle.
+--   Each tuple contains the name of the source rod and the name of the destination rod.
 
--- Solves the Tower of Hanoi puzzle for a given number of disks.
--- 
--- The 'hanoi' function takes four arguments:
--- * The number of disks to be moved.
--- * The name of the source peg.
--- * The name of the auxiliary peg.
--- * The name of the destination peg.
--- 
--- It returns a list of pairs representing the moves to solve the puzzle.
--- Each pair consists of the name of the source peg and the name of the destination peg.
 hanoi :: Int -> String -> String -> String -> [(String, String)]
 hanoi 0 _ _ _ = []
 hanoi n a b c = hanoi (n - 1) a c b ++ [(a, c)] ++ hanoi (n - 1) b a c
+
+--   The function performs validation checks on the input arguments and throws an error
+--   if any of the conditions are not met.
 
 hanoiValidate :: Int -> String -> String -> String -> [(String, String)]
 hanoiValidate n a b c
