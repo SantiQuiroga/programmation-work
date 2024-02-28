@@ -1,3 +1,5 @@
+module TestHanoi where
+
 import Hanoi (hanoiValidate)
 import Test.QuickCheck (Property, property, (===), quickCheck)
 

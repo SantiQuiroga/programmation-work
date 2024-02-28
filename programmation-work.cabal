@@ -1,0 +1,48 @@
+cabal-version:      3.0
+name:               programmation-work
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+author:             Santiago Quiroga
+maintainer:         quiroga.default.santiago@gmail.com
+category:           Math
+build-type:         Simple
+extra-doc-files:    README.md
+
+common common-configurations
+    ghc-options:        -Wall
+    build-depends:      base
+    default-language:   Haskell2010
+
+common test-configurations
+    ghc-options:        -threaded 
+                        -rtsopts 
+                        -with-rtsopts=-N
+    build-depends:      programmation-work
+
+library
+    import:             common-configurations
+    hs-source-dirs:     lib
+    exposed-modules:    Hanoi
+                        CreditCardValidator
+                        QuickSort
+                        Insert
+                        Day26Month02.Split
+
+executable programmation-work
+    import:             common-configurations,
+                        test-configurations
+    hs-source-dirs:     src
+    main-is:            Main.hs
+
+Test-Suite test
+    import:             common-configurations,
+                        test-configurations
+    type:               exitcode-stdio-1.0
+    hs-source-dirs:     test
+    main-is:            Test.hs
+    build-depends:      QuickCheck
+
+source-repository head
+  type:                 git
+  location:             https://github.com/SantiQuiroga/programmation-work
