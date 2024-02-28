@@ -28,6 +28,10 @@ library
                         QuickSort
                         Insert
                         Day26Month02.Split
+                        BookExercises.Examples
+                        BookExercises.Library
+                        BookExercises.Parenthesise
+                        BookExercises.SyntacticErrors
 
 executable programmation-work
     import:             common-configurations,
