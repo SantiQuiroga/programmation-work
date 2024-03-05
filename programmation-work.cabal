@@ -28,6 +28,7 @@ library
                         CreditCardValidator
                         QuickSort
                         Insert
+                        YCombinatorExamples
                         Day26Month02.Split
                         BookExercises.Examples
                         BookExercises.Library
