@@ -1,19 +1,11 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-
-{-# HLINT ignore "Use foldr" #-}
-{-# HLINT ignore "Avoid lambda using infix" #-}
-
 module Evaluation
   ( meanAge,
     parseStudents,
     parseStudentNames,
     youngerThan,
     ageInRange,
-    studentList,
   )
 where
-
-import Data.List.Split (splitOn)
 
 type Learner = (String, Int)
 
@@ -34,7 +26,7 @@ isNotCommaChar x
 
 sumAges :: [Learner] -> Int
 sumAges [] = 0
-sumAges (x : xs) = snd x + sumAges xs
+sumAges xs = foldr ((+) . snd) 0 xs
 
 meanAge :: [Learner] -> Float
 meanAge [] = 0
@@ -56,14 +48,6 @@ parseStudents xs = (name, age) : parseStudents next
     rest = dropWhile isSpaceChar (dropWhile isNotSpaceChar xs)
     age = read (takeWhile isNotCommaChar rest)
     next = dropWhile isSpaceChar (dropWhile isNotSpaceChar rest)
-
-studentList :: String -> [(String, Int)]
-studentList "" = []
-studentList s = tuples
-  where
-    firstList = splitOn s ","
-    secondList = map (`splitOn` " ") firstList
-    tuples = map (\[[x], [y]] -> ([x], read [y])) secondList
 
 youngerThan :: [Learner] -> Int -> [Learner]
 youngerThan [] _ = []

@@ -24,6 +24,7 @@ library
     import:             common-configurations
     hs-source-dirs:     lib
     exposed-modules:    Hanoi
+                        Evaluation
                         CreditCardValidator
                         QuickSort
                         Insert
